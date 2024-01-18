@@ -1,0 +1,49 @@
+# Method_Overloading
+
+from multipledispatch import dispatch
+
+class MathOperations:
+    @dispatch(int, int)
+    def add(self, x, y):
+        return x + y
+
+    @dispatch(int, int, int)
+    def add(self, x, y, z):
+        return x + y + z
+
+calc = MathOperations()
+result1 = calc.add(2, 3)         
+result2 = calc.add(2, 3, 4)      
+
+print(result1)  # Output: 5
+print(result2)  # Output: 9
+
+
+# pip3 install multipledispatch #
+
+
+
+# Method_Overriding
+
+class Animal:
+    def make_sound(self):
+        pass
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow!"
+
+# Demonstrating run-time polymorphism
+def animal_sound(animal):
+    return animal.make_sound()
+
+dog_instance = Dog()
+cat_instance = Cat()
+
+print(animal_sound(dog_instance))  # Output: Woof!
+print(animal_sound(cat_instance))  # Output: Meow!
+
